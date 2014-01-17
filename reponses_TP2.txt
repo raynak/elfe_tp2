@@ -1,0 +1,67 @@
+Question 1: 
+Il y a un tigre dans la cellule 1 et une princesse dans la cellule 2.
+
+Question 2:
+P(X) : il y a une princesse dans la cellule X
+T(Y) : il y a un tigre dans la cellule
+e Y
+– 1 –
+Il y a une princesse dans cette cellule et un tigre dans l’autre
+P(1) and T(2)
+
+– 2 –
+Il y a une princesse dans une cellule et il y a un tigre dans une cellule
+(P(1) and T(2)) xor (P(2) and T(1))
+
+
+Question 3 :
+Je nomme AFF1 l'expression logique exprimant l'affiche 1 
+      et AFF2 l'expression logique exprimant l'affiche 2
+
+Ce qui donne pour le jeu :
+
+(AFF1 and not(AFF2)) xor (not(AFF1) and AFF2)
+
+
+
+
+Exercice 2 : genealogie
+
+
+Question 6 :
+DES-Datalog> ancetre(X,Y)
+
+{
+  ancetre(amy,carol3),
+  ancetre(amy,fred),
+  ancetre(carol1,carol2),
+  ancetre(carol1,carol3),
+  ancetre(carol2,carol3),
+  ancetre(fred,carol3),
+  ancetre(grace,amy),
+  ancetre(grace,carol3),
+  ancetre(grace,fred),
+  ancetre(jack,carol3),
+  ancetre(jack,fred),
+  ancetre(tom,amy),
+  ancetre(tom,carol3),
+  ancetre(tom,fred),
+  ancetre(tony,carol2),
+  ancetre(tony,carol3)
+}
+Info: 16 tuples computed.
+
+
+DES-Datalog> parent(X,Y)
+
+{
+  parent(amy,fred),
+  parent(carol1,carol2),
+  parent(carol2,carol3),
+  parent(fred,carol3),
+  parent(grace,amy),
+  parent(jack,fred),
+  parent(tom,amy),
+  parent(tony,carol2)
+}
+Info: 8 tuples computed.

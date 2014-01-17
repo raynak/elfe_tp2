@@ -1,0 +1,12 @@
+% ELFE - programmation logique et fonctionelle, evidemment!
+% Licence 3 informatique, universite Lille 1
+% les princesses et les tigres (2/4)
+
+contenu(tigre).
+contenu(princesse).
+
+affiche_1(princesse,tigre).
+affiche_2(X,Y) :- contenu(X), contenu(Y), not(X=Y).
+
+solutions(X,Y):- affiche_1(X,Y),not(affiche_2(X,Y)).
+solutions(X,Y):- affiche_2(X,Y),not(affiche_1(X,Y)).

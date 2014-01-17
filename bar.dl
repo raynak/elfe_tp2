@@ -1,0 +1,53 @@
+% bar
+
+%les buveurs
+drinker(jean).
+drinker(jacques).
+drinker(jules).
+
+%les pubs
+pub(lataverne).
+pub(lecochonquirit).
+pub(sansalccol).
+
+%les bieres
+beer(kwak).
+beer(leffe).
+beer(jupiler).
+beer(troismonts).
+
+%predicats
+%frequente
+frequente(jean,lataverne).
+frequente(jean,lecochonquirit).
+frequente(jules,sansalcool).
+
+%aime
+aime(jean,kwak).
+aime(jules,leffe).
+aime(jacques,jupiler).
+
+%sert
+sert(lataverne,kwak).
+sert(lataverne,troismonts).
+sert(lecochonquirit,leffe).
+sert(lecochonquirit,jupiler).
+sert(lecochonquirit,kwak).
+
+%predicat content
+content(D) :- frequente(D,P), sert(P,B), aime(D,B).
+
+%devrait_frequenter
+devrait_frequenter(D,P) :- sert(P,B), aime(D,B).
+
+%triste
+triste(D) :- aime(D,B), sert(P,B), not(frequente(D,P)).
+
+%devrait_pas_frequenter
+devrait_pas_frequenter(D, P) :- aime(D,B), frequente(D,P), not(sert(P,B)).
+
+%pas_tres_content
+pas_tres_content(D) :- frequente(D,P),devrait_pas_frequenter(D,P).
+
+%tres_content
+tres_content(D) :- frequente(D,P), not(pas_tres_content(D)).
